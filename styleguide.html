@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- uikit -->
+	<link rel="stylesheet" href="./src/vendor/uikit/css/uikit.min.css" />
+	<script src="./src/js/vendor/jquery.js"></script>
+	<script src="./src/vendor/uikit/js/uikit.min.js"></script>
+	<script src="./src/vendor/uikit/js/uikit-icons.min.js"></script>
+	<script src="./src/js/ui/main.js"></script>
+	<!-- fotorama -->
+	<link rel="stylesheet" href="./src/vendor/fotorama/fotorama.css" />
+	<script src="./src/vendor/fotorama/fotorama.js"></script>
+	<!-- fancybox -->
+	<link rel="stylesheet" href="./src/vendor/fancybox/dist/jquery.fancybox.min.css" />
+	<script src="./src/vendor/fancybox/dist/jquery.fancybox.min.js"></script>
+
+	<link rel="stylesheet" href="./src/styles/main.css">
+
+	<!-- favicon -->
+	<link rel="apple-touch-icon" sizes="76x76" href="./apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+	<link rel="manifest" href="./site.webmanifest">
+	<link rel="mask-icon" href="./safari-pinned-tab.svg" color="#d2bea0">
+	<meta name="msapplication-TileColor" content="#d2bea0">
+	<meta name="theme-color" content="#d2bea0">
+
+	<title>Семушка</title>
+</head>
+<body>
+	<header class="header" uk-sticky>
+		<div class="header--desktop uk-visible@m">
+			<div class="uk-container">
+				<div class="logo">
+					<img src="./src/images/logo.svg" alt="Логотип: Семушка - back to nature" title="Логотип: Семушка - back to nature">
+				</div>
+				<nav class="top-nav">
+					<div class="top-nav__row">
+						<ul class="top-nav__list">
+							<li class="top-nav__item">
+								<a href="#" class="top-nav__link">
+									<span uk-icon="menu"></span>
+									<span class="top-nav__parent">Продукция</span>
+								</a>
+								<div class="top-nav__childs">
+									<div class="uk-container">
+										<div class="main-nav">
+											<ul class="main-nav__list main-nav__list--lvl1">
+												<li class="main-nav__item main-nav__item--lvl1">
+													<a href="#" class="main-nav__link">Орехи</a>
+													<div class="main-nav__childs">
+														<div class="uk-container">
+															<ul class="main-nav__list main-nav__list--lvl2">
+																<li class="main-nav__item main-nav__item--lvl2">
+																	<a href="#" class="main-nav__link">Грецкий орех</a>
+																</li>
+																<li class="main-nav__item main-nav__item--lvl2">
+																	<a href="#" class="main-nav__link">Миндаль</a>
+																</li>
+																<li class="main-nav__item main-nav__item--lvl2">
+																	<a href="#" class="main-nav__link">Фундук</a>
+																	<div class="main-nav__childs">
+																		<ul class="main-nav__list main-nav__list--lvl3">
+																			<li class="main-nav__item main-nav__item--lvl3">
+																				<a href="#" class="main-nav__link">Жареный</a>
+																			</li>
+																			<li class="main-nav__item main-nav__item--lvl3">
+																				<a href="#" class="main-nav__link">Бланшированный</a>
+																			</li>
+																			<li class="main-nav__item main-nav__item--lvl3">
+																				<a href="#" class="main-nav__link">В скорлупе</a>
+																			</li>
+																			<li class="main-nav__item main-nav__item--lvl3">
+																				<a href="#" class="main-nav__link">Дробленый</a>
+																			</li>
+																			<li class="main-nav__item main-nav__item--lvl3">
+																				<a href="#" class="main-nav__link">Сырой</a>
+																			</li>
+																			<li class="main-nav__item main-nav__item--lvl3">
+																				<a href="#" class="main-nav__link">Лепестки</a>
+																			</li>
+																		</ul>
+																		<div class="main-nav__image uk-cover-container uk-height-medium">
+																			<img src="./src/images/menu-test.png" alt="" uk-cover>
+																		</div>
+																	</div>
+																</li>
+																<li class="main-nav__item main-nav__item--lvl2">
+																	<a href="#" class="main-nav__link">Кешью</a>
+																</li>
+																<li class="main-nav__item main-nav__item--lvl2">
+																	<a href="#" class="main-nav__link">Ореховые смеси</a>
+																</li>
+																<li class="main-nav__item main-nav__item--lvl2">
+																	<a href="#" class="main-nav__link">Другие</a>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</li>
+												<li class="main-nav__item main-nav__item--lvl1">
+													<a href="#" class="main-nav__link">Семена</a>
+												</li>
+												<li class="main-nav__item main-nav__item--lvl1">
+													<a href="#" class="main-nav__link">Сухофрукты</a>
+													<div class="main-nav__childs">
+														<ul class="main-nav__list main-nav__list--lvl2">
+															<li class="main-nav__item main-nav__item--lvl2"><a href="#" class="main-nav__link">Фруктики</a></li>
+															<li class="main-nav__item main-nav__item--lvl2"><a href="#" class="main-nav__link">Фруктики 2</a></li>
+														</ul>
+													</div>
+												</li>
+												<li class="main-nav__item main-nav__item--lvl1">
+													<a href="#" class="main-nav__link">Цукаты</a>
+												</li>
+												<li class="main-nav__item main-nav__item--lvl1">
+													<a href="#" class="main-nav__link">Для кондитеров</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="top-nav__item">
+								<a href="#" class="top-nav__link">
+									<span>Новости</span>
+								</a>
+							</li>
+							<li class="top-nav__item">
+								<a href="#" class="top-nav__link">
+									<span>О&nbsp;компании</span>
+								</a>
+							</li>
+							<li class="top-nav__item">
+								<div class="top-nav__link lang-selector">
+									<span class="lang-selector__text">RU</span>
+									<div uk-dropdown="pos: bottom-justify" class="lang-selector__dropdown">
+										<ul class="uk-nav uk-dropdown-nav lang-selector__dropdown-nav">
+											<li class="uk-active"><a href="#" class="top-nav__link">RU</a></li>
+											<li><a href="#" class="top-nav__link">EN</a></li>
+										</ul>
+									</div>
+								</div>
+							</li>
+						</ul>
+						<div class="top-nav__services services-list">
+							<div class="services-list__item">
+								<a href="#" class="services-list__icon services-list__icon--search"></a>
+							</div>
+							<div class="services-list__item">
+								<button uk-toggle="target: #receiver-modal" type="button" class="services-list__icon services-list__icon--receiver"></button>
+
+							</div>
+							<div class="services-list__item">
+								<button uk-toggle="target: #user-modal" type="button" class="services-list__icon services-list__icon--user"></button>
+
+							</div>
+							<div class="services-list__item">
+								<a href="#" class="services-list__icon services-list__icon--cart"></a>
+								<span class="uk-badge">1</span>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="header--mobile uk-hidden@m">
+			<div class="uk-container">
+				<div class="header__mobile">
+					<div class="header__mobile-burger">
+						<button uk-toggle="target: #header-mobile" uk-navbar-toggle-icon type="button"></button>
+					</div>
+					<div class="header__mobile-logo logo">
+						<img src="./src/images/logo.svg" alt="Логотип: Семушка - back to nature" title="Логотип: Семушка - back to nature">
+					</div>
+					<div class="header__mobile-link lang-selector">
+						<span class="lang-selector__text">RU</span>
+						<div uk-dropdown="pos: bottom-justify" class="lang-selector__dropdown">
+							<ul class="uk-nav uk-dropdown-nav lang-selector__dropdown-nav">
+								<li class="uk-active"><a href="#" class="top-nav__link">RU</a></li>
+								<li><a href="#" class="top-nav__link">EN</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="header__mobile-services services-list">
+						<div class="services-list__item">
+							<button uk-toggle="target: #receiver-modal" type="button" class="services-list__icon services-list__icon--receiver"></button>
+						</div>
+						<div class="services-list__item">
+							<button uk-toggle="target: #user-modal" type="button" class="services-list__icon services-list__icon--user"></button>
+
+						</div>
+						<div class="services-list__item">
+							<a href="#" class="services-list__icon services-list__icon--cart"></a>
+							<span class="uk-badge">1</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="header-mobile" uk-offcanvas>
+				<div class="uk-offcanvas-bar">
+					<form action="" class="form form--mobile">
+						<div class="uk-margin">
+							<div class="uk-inline form__item form__item--search">
+								<a class="uk-form-icon uk-form-icon-flip form__icon" href="#" uk-icon="icon: search"></a>
+								<input class="uk-input form__input" type="text" placeholder="Поиск">
+							</div>
+						</div>
+					</form>
+					<nav class="mobile-nav">
+						<ul uk-accordion="multiple: true" class="mobile-nav__list mobile-nav__list--lvl1">
+							<li class="mobile-nav__item mobile-nav__item--lvl1">
+								<a class="uk-accordion-title mobile-nav__title active" href="#">Орехи</a>
+								<div class="uk-accordion-content mobile-nav__body">
+									<ul uk-accordion="multiple: true" class="mobile-nav__list mobile-nav__list--lvl2">
+										<li class="mobile-nav__item mobile-nav__item--lvl2">
+											<a href="#" class="uk-accordion-title mobile-nav__title active">Грецкий орех</a>
+											<div class="uk-accordion-content mobile-nav__body">
+												<ul uk-accordion="multiple: true" class="mobile-nav__list mobile-nav__list--lvl3">
+													<li class="mobile-nav__item mobile-nav__item--lvl3">
+														<a href="#" class="mobile-nav__title">Жареный</a>
+													</li>
+													<li class="mobile-nav__item mobile-nav__item--lvl3">
+														<a href="#" class="mobile-nav__title">Бланшированный</a>
+													</li>
+													<li class="mobile-nav__item mobile-nav__item--lvl3">
+														<a href="#" class="mobile-nav__title active">В скорлупе</a>
+													</li>
+													<li class="mobile-nav__item mobile-nav__item--lvl3">
+														<a href="#" class="mobile-nav__title">Дробленый</a>
+													</li>
+													<li class="mobile-nav__item mobile-nav__item--lvl3">
+														<a href="#" class="mobile-nav__title">Сырой</a>
+													</li>
+													<li class="mobile-nav__item mobile-nav__item--lvl3">
+														<a href="#" class="mobile-nav__title">Лепестки</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li class="mobile-nav__item mobile-nav__item--lvl2">
+											<a href="#" class="uk-accordion-title mobile-nav__title">Миндаль</a>
+										</li>
+										<li class="mobile-nav__item mobile-nav__item--lvl2">
+											<a href="#" class="uk-accordion-title mobile-nav__title">Фундук</a>
+											<div class="uk-accordion-content mobile-nav__body">
+												<ul uk-accordion="multiple: true" class="mobile-nav__list mobile-nav__list--lvl3">
+													<li class="mobile-nav__item mobile-nav__item--lvl3">
+														<a href="#" class="mobile-nav__title">Жареный</a>
+													</li>
+													<li class="mobile-nav__item mobile-nav__item--lvl3">
+														<a href="#" class="mobile-nav__title">Бланшированный</a>
+													</li>
+													<li class="mobile-nav__item mobile-nav__item--lvl3">
+														<a href="#" class="mobile-nav__title active">В скорлупе</a>
+													</li>
+													<li class="mobile-nav__item mobile-nav__item--lvl3">
+														<a href="#" class="mobile-nav__title">Дробленый</a>
+													</li>
+													<li class="mobile-nav__item mobile-nav__item--lvl3">
+														<a href="#" class="mobile-nav__title">Сырой</a>
+													</li>
+													<li class="mobile-nav__item mobile-nav__item--lvl3">
+														<a href="#" class="mobile-nav__title">Лепестки</a>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li class="mobile-nav__item mobile-nav__item--lvl2">
+											<a href="#" class="uk-accordion-title mobile-nav__title">Фисташки</a>
+										</li>
+										<li class="mobile-nav__item mobile-nav__item--lvl2">
+											<a href="#" class="uk-accordion-title mobile-nav__title">Кешью</a>
+										</li>
+										<li class="mobile-nav__item mobile-nav__item--lvl2">
+											<a href="#" class="uk-accordion-title mobile-nav__title">Ореховые смеси</a>
+										</li>
+										<li class="mobile-nav__item mobile-nav__item--lvl2">
+											<a href="#" class="uk-accordion-title mobile-nav__title">Другие</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li class="mobile-nav__item mobile-nav__item--lvl1">
+								<a class="uk-accordion-title mobile-nav__title" href="#">Семена</a>
+								<div class="uk-accordion-content mobile-nav__body">
+									123
+								</div>
+							</li>
+							<li class="mobile-nav__item mobile-nav__item--lvl1">
+								<a class="uk-accordion-title mobile-nav__title" href="#">Сухофрукты</a>
+								<div class="uk-accordion-content mobile-nav__body">
+									234
+								</div>
+							</li>
+							<li class="mobile-nav__item mobile-nav__item--lvl1">
+								<a class="uk-accordion-title mobile-nav__title" href="#">Цукаты</a>
+								<div class="uk-accordion-content mobile-nav__body">
+									345
+								</div>
+							</li>
+							<li class="mobile-nav__item mobile-nav__item--lvl1">
+								<a class="uk-accordion-title mobile-nav__title" href="#">Для кондитеров</a>
+								<div class="uk-accordion-content mobile-nav__body">
+									456
+								</div>
+							</li>
+						</ul>
+						<ul class="mobile-nav__list mobile-nav__list--lvl1 uk-margin-medium">
+							<li class="mobile-nav__item mobile-nav__item--lvl1">
+								<a class="mobile-nav__title" href="#">Новости</a>
+							</li>
+							<li class="mobile-nav__item mobile-nav__item--lvl1">
+								<a class="mobile-nav__title" href="#">О компании</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="page-wrapper">
+		<main class="content">
+			<div class="uk-section">
+				<div class="uk-container">
+					<h2 class="uk-h2">Styleguide</h2>
+				</div>
+			</div>
+		</main>
+	</div>
+	<footer class="footer">
+		<div class="uk-container">
+			<div class="footer__list uk-grid-small" uk-grid>
+				<div class="footer__item uk-width-1-4@m">
+					<ul uk-accordion>
+						<li>
+							<a class="uk-accordion-title footer__item-title" href="#">Орехи</a>
+							<div class="uk-accordion-content">
+								<a href="#" class="footer__item-title">Орехи</a>
+								<div class="footer__item-body">
+									<ul class="footer__item-list">
+										<li><a href="#" class="link">Арахис</a></li>
+										<li><a href="#" class="link">Грецкий орех</a></li>
+										<li><a href="#" class="link">Кешью</a></li>
+										<li><a href="#" class="link">Фисташки</a></li>
+										<li><a href="#" class="link">Фундук</a></li>
+										<li><a href="#" class="link">Прочие</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="footer__item uk-width-1-4@m">
+					<ul uk-accordion>
+						<li>
+							<a class="uk-accordion-title footer__item-title" href="#">Сухофрукты</a>
+							<div class="uk-accordion-content">
+								<a href="#" class="footer__item-title">Сухофрукты</a>
+								<div class="footer__item-body">
+									<ul class="footer__item-list">
+										<li><a href="#" class="link">Армянские</a></li>
+										<li><a href="#" class="link">Изюм</a></li>
+										<li><a href="#" class="link">Инжир</a></li>
+										<li><a href="#" class="link">Курага</a></li>
+										<li><a href="#" class="link">Финики</a></li>
+										<li><a href="#" class="link">Ягода</a></li>
+										<li><a href="#" class="link">Без сахара</a></li>
+										<li><a href="#" class="link">Цукаты</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="footer__item uk-width-1-4@m">
+					<ul uk-accordion>
+						<li>
+							<a class="uk-accordion-title footer__item-title" href="#">Семена</a>
+							<div class="uk-accordion-content">
+								<a href="#" class="footer__item-title">Семена</a>
+								<div class="footer__item-body">
+									<ul class="footer__item-list">
+										<li><a href="#" class="link">Киноа</a></li>
+										<li><a href="#" class="link">Чиа</a></li>
+										<li><a href="#" class="link">Подсолнечник</a></li>
+										<li><a href="#" class="link">Тыква</a></li>
+										<li><a href="#" class="link">Ореховые смеси</a></li>
+										<li><a href="#" class="link">Для кондитеров</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="footer__item uk-width-1-4@m">
+					<div class="">
+						<a href="tel:+ 74991103044" class="footer__item-title footer__item-title--phone">+ 7 (499) 110 3044</a>
+						<div class="footer__item-body">
+							<ul class="footer__item-list">
+								<li><p>1115093, Москва, Большая Серпуховская ул., дом 32, строение 1</p></li>
+								<li><p>с 10:00 до 18:00</p></li>
+								<li><p><a href="mailto:info@semushka-m.ru" class="link">info@semushka-m.ru</a></p></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer__info" uk-grid>
+				<div class="footer__info-item uk-width-1-4@m">
+					<div class="logo">
+						<img src="./src/images/logo.svg" alt="Логотип: Семушка - back to nature" title="Логотип: Семушка - back to nature">
+					</div>
+				</div>
+				<div class="footer__info-item uk-width-1-4@m">
+					Политика конфиденциальности 2002–2020 © «Семушка»
+				</div>
+				<div class="footer__info-item uk-width-1-2@m uk-visible@m">
+					<img src="./src/images/map-test.png" alt="1115093, Москва, Большая Серпуховская ул., дом 32, строение 1">
+				</div>
+			</div>
+			<div class="copyright">
+				<p>ООО “СЕMУШКА” Юридический адрес: 129012, моска город, ЯМСКАЯ 2-Я улица, дом 9, Э З ПОМ І КОМП 22 ОРГ: 12233434995454 ИНН: 3408840545 КПП: 34343402323</p>
+			</div>
+		</div>
+	</footer>
+	<div id="receiver-modal" uk-modal>
+		<div class="uk-modal-dialog uk-modal-body">
+			<h2 class="uk-modal-title uk-h3 uk-text-center">Закажите звонок и получите  бесплатную консультацию</h2>
+			<form class="uk-form-stacked">
+				<div class="uk-margin">
+					<label class="uk-form-label" for="form-stacked-text">Ваш номер телефона</label>
+					<div class="uk-form-controls">
+						<input class="uk-input" id="form-stacked-text" type="tel" placeholder="+7 000 000-00-00">
+					</div>
+				</div>
+				<div class="uk-margin">
+					<label class="uk-form-label">Комментарий</label>
+					<div class="uk-form-controls">
+						<textarea class="uk-textarea"></textarea>
+					</div>
+				</div>
+				<div class="uk-margin-medium">
+					<button class="btn uk-width" type="button"><span>Купить</span></button>
+				</div>
+				<div class="uk-margin uk-text-center">
+					<button class="btn btn--link" type="button"><span>Зарегистрироваться</span></button>
+				</div>
+			</form>
+			<button class="uk-modal-close-outside" type="button" uk-close></button>
+		</div>
+	</div>
+	<div id="user-modal" uk-modal>
+		<div class="uk-modal-dialog uk-modal-body">
+			<h2 class="uk-modal-title uk-text-center">Вход</h2>
+			<form class="uk-form-stacked">
+				<div class="uk-margin">
+					<label class="uk-form-label" for="form-stacked-text">Ваш email</label>
+					<div class="uk-form-controls">
+						<input class="uk-input" id="form-stacked-text" type="email" placeholder="info@semushka.com">
+					</div>
+				</div>
+				<div class="uk-margin">
+					<label class="uk-form-label" for="form-stacked-text">Пароль</label>
+					<div class="uk-form-controls">
+						<input class="uk-input" id="form-stacked-text" type="text" >
+					</div>
+				</div>
+				<div class="uk-margin-medium">
+					<button class="btn uk-width" type="button"><span>Купить</span></button>
+				</div>
+				<div class="uk-margin uk-text-center">
+					<button class="btn btn--link" type="button"><span>Зарегистрироваться</span></button>
+				</div>
+			</form>
+			<button class="uk-modal-close-outside" type="button" uk-close></button>
+		</div>
+	</div>
+</body>
+</html>

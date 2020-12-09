@@ -1,0 +1,1 @@
+<img src="<?=SITE_TEMPLATE_PATH?>/images/map-test.png" alt="1115093, Москва, Большая Серпуховская ул., дом 32, строение 1">

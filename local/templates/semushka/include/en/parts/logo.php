@@ -1,0 +1,1 @@
+<img src="<?=SITE_TEMPLATE_PATH?>/images/logo.svg" alt="Семушка - back to nature" title="Семушка - back to nature" />
