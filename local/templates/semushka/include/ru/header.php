@@ -13,20 +13,62 @@ if (Cmodule::IncludeModule("iblock")) {
         $banner_props = $banner->GetProperties();
     }
     if ($banner_fields["ACTIVE"] == "Y") {
-        echo '<div class="top-banner">';
+        echo '<div class="top-banner" uk-toggle="target: #top-banner-modal">';
         if (!empty($banner_props)) {
             if (!empty($banner_props["file"]["VALUE"])) {
                 $img = CFile::GetPath($banner_props["file"]["VALUE"]);
                 if (!empty($img)) {
-                    if (!empty($banner_props["link"]["VALUE"])) {
-                        echo '<a href="' . $banner_props["link"]["VALUE"] . '"><img src="' . $img . '"></a>';
-                    } else {
-                        echo '<img src="' . $img . '">';
-                    }
+                    echo '<img class="pc-banner" src="' . $img . '">';
+                }
+            }
+            if (!empty($banner_props["file_mobile"]["VALUE"])) {
+                $img_mobile = CFile::GetPath($banner_props["file_mobile"]["VALUE"]);
+                if (!empty($img_mobile)) {
+                    echo '<img class="mobile-banner" src="' . $img_mobile . '">';
                 }
             }
         }
         echo '</div>';
+        // Modal - form
+        ?>
+        <div id="top-banner-modal" uk-modal>
+            <div class="uk-modal-dialog uk-modal-body">
+                <?$APPLICATION->IncludeComponent(
+                    "bitrix:form",
+                    "callback",
+                    Array(
+                        "AJAX_MODE" => "Y",
+                        "AJAX_OPTION_ADDITIONAL" => "",
+                        "AJAX_OPTION_HISTORY" => "Y",
+                        "AJAX_OPTION_JUMP" => "N",
+                        "AJAX_OPTION_STYLE" => "N",
+                        "CACHE_TIME" => "3600",
+                        "CACHE_TYPE" => "A",
+                        "CHAIN_ITEM_LINK" => "",
+                        "CHAIN_ITEM_TEXT" => "",
+                        "EDIT_ADDITIONAL" => "N",
+                        "EDIT_STATUS" => "N",
+                        "IGNORE_CUSTOM_TEMPLATE" => "N",
+                        "NOT_SHOW_FILTER" => array("",""),
+                        "NOT_SHOW_TABLE" => array("",""),
+                        "RESULT_ID" => $_REQUEST[RESULT_ID],
+                        "SEF_MODE" => "N",
+                        "SHOW_ADDITIONAL" => "N",
+                        "SHOW_ANSWER_VALUE" => "N",
+                        "SHOW_EDIT_PAGE" => "N",
+                        "SHOW_LIST_PAGE" => "N",
+                        "SHOW_STATUS" => "N",
+                        "SHOW_VIEW_PAGE" => "N",
+                        "START_PAGE" => "new",
+                        "SUCCESS_URL" => "",
+                        "USE_EXTENDED_ERRORS" => "N",
+                        "VARIABLE_ALIASES" => Array("action"=>"action"),
+                        "WEB_FORM_ID" => "5"
+                    )
+                );?>
+            </div>
+        </div>
+        <?php
     }
 }
 ?>

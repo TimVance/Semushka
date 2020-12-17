@@ -1,0 +1,95 @@
+.personal-order-list {
+
+}
+
+.personal-order-row {
+	border-bottom: 1px solid rgba(179, 148, 103, .2);
+}
+
+.personal-order-row > div {
+	display: inline-block;
+	padding: 5px 10px;
+}
+
+.personal-order-row .id {
+	width: 20px;
+	text-align: center;
+}
+
+.personal-order-row .date {
+	width: 35%;
+	text-align: center;
+}
+
+.personal-order-row .price {
+	width: 35%;
+	text-align: center;
+	cursor: pointer;
+}
+
+.personal-order-row .price i {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	background-color: transparent;
+	border-top: 2px solid #000;
+	border-right: 2px solid #000;
+	transform: rotate(135deg);
+	margin-left: 5px;
+	margin-bottom: 3px;
+}
+
+.personal-order-basket-items {
+	display: none !important;
+	width: 100%;
+	background-color: #fbfafa;
+}
+
+.personal-order-basket-items.show {
+	display: table !important;
+}
+
+.personal-order-basket-item {
+	display: table-row;
+}
+
+.personal-order-basket-item > div {
+	display: table-cell;
+	border-top: 1px solid rgba(179, 148, 103, .2);
+
+}
+
+.personal-order-basket-item-id {
+	padding: 5px;
+}
+
+.personal-order-basket-item-name {
+	max-width: 120px;
+}
+
+.personal-order-basket-item-count {
+	text-align: center;
+}
+
+.personal-order-basket-item-price {
+	text-align: center;
+}
+
+.personal-order-row .repeat {
+	width: calc(30% - 50px);
+	text-align: right;
+}
+
+.personal-order-row .repeat svg {
+	width: 16px;
+	height: 16px;
+}
+
+@media screen and (max-width: 400px) {
+	.personal-order-row .date {
+		display: none;
+	}
+	.personal-order-row .price {
+		width: 50%;
+	}
+}

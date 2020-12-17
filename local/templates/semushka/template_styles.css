@@ -465,3 +465,28 @@ b, strong {
 .footer-tel a:hover {
     color: #B39467;
 }
+
+.top-banner {
+    cursor: pointer;
+}
+
+.top-banner:hover {
+    opacity: .8;
+}
+
+.top-banner .mobile-banner {
+    display: none;
+}
+
+@media screen and (max-width: 480px) {
+    .top-banner .mobile-banner {
+        display: block;
+    }
+    .top-banner .pc-banner {
+        display: none;
+    }
+}
+
+.personal_notify {
+    text-align: center;
+}
