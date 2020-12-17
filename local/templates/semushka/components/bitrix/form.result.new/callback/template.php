@@ -98,13 +98,13 @@ if($arResult["isUseCaptcha"] == "Y" && false)
 		<input class="btn uk-width" <?=(intval($arResult["F_RIGHT"]) < 10 ? "disabled=\"disabled\"" : "");?> type="submit" name="web_form_submit" value="<?=htmlspecialcharsbx(strlen(trim($arResult["arForm"]["BUTTON"])) <= 0 ? GetMessage("FORM_ADD") : $arResult["arForm"]["BUTTON"]);?>" />
     </div>
 
+    <div class="personal_notify">Отправляя форму, вы соглашаетесь с условиями использования и потверждаете свое согласие на <a href="/policy/">обработку персональных данных</a></div>
+
 </div>
 
 <?=$arResult["FORM_FOOTER"]?>
 <?
 } //endif (isFormNote)
 ?>
-
-<div class="personal_notify">Отправляя форму, вы соглашаетесь с условиями использования и потверждаете свое согласие на <a href="/policy/">обработку персональных данных</a></div>
 
 <button class="uk-modal-close-outside" type="button" uk-close></button>

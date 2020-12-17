@@ -30,6 +30,9 @@ $(function () {
         let height = $("#bx-panel").height();
         $("#header-search").css("top", height);
     }
+    if ($(".top-banner")) {
+        $(".page-wrapper").addClass("margin0");
+    }
     $('#bx-soa-properties input[name="ORDER_PROP_3"], #callback_inputmask, #order_inputmask').mask("+7 999 999-99-99");
 
     $('.js-delay-section-product').click(function (e) {

@@ -10,7 +10,7 @@
     z-index: 2;
 }
 
-body.admin .page-wrapper {
+body.admin .page-wrapper, .page-wrapper.margin0 {
     margin-top: 0;
 }
 
@@ -493,4 +493,16 @@ b, strong {
 
 .uk-modal-page {
     overflow: visible !important;
+}
+
+.catalog__card .catalog__body {
+    margin-top: 0;
+}
+
+.catalog__image:before {
+    background: none;
+}
+
+.catalog__image {
+    border-radius: 3px;
 }
