@@ -88,7 +88,11 @@ $this->setFrameMode(true);?>
                                         </form>
                                     </div>
                                     <div class="card__footer-item">
-                                        <button class="btn js-add-section-product" type="button">
+                                        <button
+                                                data-name="<?=$item["NAME"]?>"
+                                                <?=($item["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] == "Y" ? 'uk-toggle="target: #delay-modal"' : "")?>
+                                                class="btn <?=($item["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] == "Y" ? "js-delay-section-product" : "js-add-section-product")?>"
+                                                type="button">
                                             <span><?=($item["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] == "Y" ? "Под заказ" : "Купить")?></span>
                                         </button>
                                     </div>

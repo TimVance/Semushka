@@ -490,3 +490,7 @@ b, strong {
 .personal_notify {
     text-align: center;
 }
+
+.uk-modal-page {
+    overflow: visible !important;
+}

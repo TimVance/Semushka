@@ -31,6 +31,13 @@ $(function () {
         $("#header-search").css("top", height);
     }
     $('#bx-soa-properties input[name="ORDER_PROP_3"], #callback_inputmask, #order_inputmask').mask("+7 999 999-99-99");
+
+    $('.js-delay-section-product').click(function (e) {
+        e.preventDefault();
+        let el = $(this);
+        let name = el.data("name");
+        $("#delay-modal #js-delay-good").val(name);
+    });
 });
 
 BX.addCustomEvent('onAjaxSuccess', function () {

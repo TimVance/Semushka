@@ -83,7 +83,12 @@ $this->AddDeleteAction($arResult['ID'], $arResult['DELETE_LINK'], CIBlock::GetAr
                     </form>
                 </div>
                 <div class="product-detail__footer-item">
-                    <button class="btn js-add-detail-product" type="button">
+                    <button
+                            data-name="<?=$arResult["NAME"]?>"
+                            <?=($arResult["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] == "Y" ? 'uk-toggle="target: #delay-modal"' : "")?>
+                            class="btn <?=($arResult["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] == "Y" ? "js-delay-section-product" : "js-add-detail-product")?>"
+                            type="button"
+                    >
                         <span class="button_title">
                             <?=($arResult["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] == "Y" ? "Под заказ" : "Купить")?>
                         </span>
