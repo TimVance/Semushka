@@ -1,5 +1,36 @@
 <? if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true) die(); ?>
 
+
+<?
+// Top Banner
+if (Cmodule::IncludeModule("iblock")) {
+    $banner_element_id = 222;
+    $banner_res = CIBlockElement::GetByID($banner_element_id);
+    $banner_props = [];
+    if ($banner = $banner_res->GetNextElement())
+    {
+        $banner_fields = $banner->GetFields();
+        $banner_props = $banner->GetProperties();
+    }
+    if ($banner_fields["ACTIVE"] == "Y") {
+        echo '<div class="top-banner">';
+        if (!empty($banner_props)) {
+            if (!empty($banner_props["file"]["VALUE"])) {
+                $img = CFile::GetPath($banner_props["file"]["VALUE"]);
+                if (!empty($img)) {
+                    if (!empty($banner_props["link"]["VALUE"])) {
+                        echo '<a href="' . $banner_props["link"]["VALUE"] . '"><img src="' . $img . '"></a>';
+                    } else {
+                        echo '<img src="' . $img . '">';
+                    }
+                }
+            }
+        }
+        echo '</div>';
+    }
+}
+?>
+
 <header class="header" <?if ($APPLICATION->GetCurPage(false) !== "/personal/order/make/") echo "uk-sticky";?>>
     <div class="uk-container">
         <div class="header-container">
