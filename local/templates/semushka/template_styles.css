@@ -506,3 +506,30 @@ b, strong {
 .catalog__image {
     border-radius: 3px;
 }
+
+.uk-form-controls {
+    position: relative;
+}
+
+.uk-form-controls .suggestions {
+    position: absolute;
+    top: 42px;
+    background-color: #fff;
+    width: 100%;
+    font-size: 14px;
+    z-index: 1;
+    -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, .15);
+    -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, .15);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .15);
+}
+
+.uk-form-controls .suggestions span {
+    display: block;
+    padding: 3px 20px;
+    cursor: pointer;
+}
+
+.uk-form-controls .suggestions span:hover {
+    background-color: #d2bea0;
+    color: #fff;
+}
