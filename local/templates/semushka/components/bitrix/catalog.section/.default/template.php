@@ -66,8 +66,8 @@ $this->setFrameMode(true);?>
                             <div class="card__footer-item">
                                 <form class="card__tools">
                                     <? if(!empty($item["OFFERS"])): ?>
-                                        <label for="select" class="select card__select">
-                                            <input class="select__toggle select__toggle--select" type="radio" name="list" value="not_changed" id="select">
+                                        <label for="select<?=$item["ID"]?>" class="select card__select">
+                                            <input class="select__toggle select__toggle--select" type="radio" name="list" value="not_changed" id="select<?=$item["ID"]?>">
                                             <div class="select__list js-select-offer-section">
                                             <? $i = 0; ?>
                                             <? foreach($item["OFFERS"] as $offer): ?>

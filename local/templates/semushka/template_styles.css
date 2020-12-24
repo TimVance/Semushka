@@ -545,3 +545,7 @@ b, strong {
 .select__list {
     z-index: 1;
 }
+
+.page-wrapper {
+    overflow: visible;
+}
