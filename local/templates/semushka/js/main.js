@@ -184,6 +184,16 @@ $(function () {
         $(".suggestions").html("");
     });
 
+    $(".js-select-offer-section input").change(function () {
+        let el = $(this);
+        let price = $(".js-select-offer-section input:checked").data("price");
+        el.closest(".card__footer-container").find(".product-section__price").text(price);
+    });
+
+    $(".js-select-offer-detail input").change(function () {
+        let price = $(".js-select-offer-detail input:checked").data("price");
+        $(".product-detail__price").text(price);
+    });
 
 });
 
@@ -202,6 +212,15 @@ window.onload = () => {
             let parent = button_detail.closest('.js-product-detail__item');
             let product_id = parseInt(parent.getAttribute('data-product-id'));
             let quantity = parseInt(parent.querySelector('.js-product-quantity__num').value);
+            let offer_list = document.querySelector(".js-select-offer-detail");
+            if (offer_list != null) {
+                let offer = offer_list.querySelector("input:checked");
+                if (offer != null) product_id = offer.value;
+                else {
+                    alert('Необходимо выбрать вес!');
+                    return false;
+                }
+            }
             if (!sendRequest(product_id, quantity)) alert('Произошла ошибка');
         });
     }
@@ -213,6 +232,15 @@ window.onload = () => {
                 let parent = el.closest('.card__footer');
                 let product_id = parseInt(parent.getAttribute('data-product-id'));
                 let quantity = parseInt(parent.querySelector('.js-product-quantity__num').value);
+                let offer_list = document.querySelector(".js-select-offer-section");
+                if (offer_list != null) {
+                    let offer = offer_list.querySelector("input:checked");
+                    if (offer != null) product_id = offer.value;
+                    else {
+                        alert('Необходимо выбрать вес!');
+                        return false;
+                    }
+                }
                 if (!sendRequest(product_id, quantity)) alert('Произошла ошибка');
             });
         });

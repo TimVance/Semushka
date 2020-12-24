@@ -18,7 +18,6 @@ $this->AddDeleteAction($arResult['ID'], $arResult['DELETE_LINK'], CIBlock::GetAr
 
 ?>
 
-
 <article class="product-detail" id="<?= $this->GetEditAreaId($arResult['ID']); ?>">
     <div class="uk-child-width-1-2@s" uk-grid>
         <div class="product-detail__item">
@@ -61,17 +60,35 @@ $this->AddDeleteAction($arResult['ID'], $arResult['DELETE_LINK'], CIBlock::GetAr
                 </div>
             </div>
             <div class="product-detail__price">
-                <? if ($arResult["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] != "Y"): ?>
-                    <?= (!empty($arResult["PRICES"]["BASE"]["VALUE"]) ? $arResult["PRICES"]["BASE"]["PRINT_VALUE"] : "") ?>
+                <? if (!empty($arResult["OFFERS"])): ?>
+                    <?=$arResult["OFFERS"][0]["PRICES"]["BASE"]["PRINT_VALUE"]?>
+                <? else: ?>
+                    <? if ($arResult["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] != "Y"): ?>
+                        <?= (!empty($arResult["PRICES"]["BASE"]["VALUE"]) ? $arResult["PRICES"]["BASE"]["PRINT_VALUE"] : "") ?>
+                    <? endif; ?>
                 <? endif; ?>
             </div>
             <div class="product-detail__footer">
                 <div class="product-detail__footer-item">
                     <form class="product-detail__tools">
-                        <label for="select" class="select product-detail__select" uk-tooltip="title: Фасовка">
-                            <? if (empty($arResult["PROPERTIES"]["weight"]["VALUE"])) $arResult["PROPERTIES"]["weight"]["VALUE"] = 0; ?>
-                            <span data-num="<?= $arResult["PROPERTIES"]["weight"]["VALUE"] ?>"><?= $arResult["PROPERTIES"]["weight"]["VALUE"] ?></span>&nbsp;кг
-                        </label>
+                        <? if(!empty($arResult["OFFERS"])): ?>
+                            <label for="select" class="select product-detail__select">
+                                <input class="select__toggle select__toggle--select" type="radio" name="list" value="not_changed" id="select">
+                                <div class="select__list js-select-offer-detail">
+                                <? $i = 0; ?>
+                                <? foreach($arResult["OFFERS"] as $offer): ?>
+                                    <input <? if ($i == 0) { echo 'checked'; $i++; }?> data-price="<?=$offer["PRICES"]["BASE"]["PRINT_VALUE"]?>" class="select__toggle" type="radio" name="list" value="<?=$offer["ID"]?>" id="list[<?=$offer["ID"]?>]">
+                                    <label class="select__label" for="list[<?=$offer["ID"]?>]"><?= $offer["PROPERTIES"]["FORMAT"]["VALUE"] ?></label>
+                                <? endforeach; ?>
+                                    <span class="select__placeholder">Вес</span>
+                                </div>
+                            </label>
+                        <? else: ?>
+                            <label for="select" class="select product-detail__select" uk-tooltip="title: Фасовка">
+                                <? if (empty($arResult["PROPERTIES"]["weight"]["VALUE"])) $arResult["PROPERTIES"]["weight"]["VALUE"] = 0; ?>
+                                <span data-num="<?= $arResult["PROPERTIES"]["weight"]["VALUE"] ?>"><?= $arResult["PROPERTIES"]["weight"]["VALUE"] ?></span>&nbsp;кг
+                            </label>
+                        <? endif; ?>
                         <div class="product-detail__count">
                             <div class="count-tools js-product-quantity">
                                 <a class="count-tools__arrow-minus js-product-quantity__arrow-minus"> — </a>

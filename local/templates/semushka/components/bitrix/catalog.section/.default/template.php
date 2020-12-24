@@ -21,6 +21,7 @@ $this->setFrameMode(true);?>
         $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
         ?>
         <div class="card-list__item" id="<?=$this->GetEditAreaId($item['ID']);?>">
+            <? echo '<pre style="display: none">'; print_r($item); echo '</pre>'; ?>
             <article class="card">
                 <div class="card__image">
                     <div class="card__img">
@@ -52,18 +53,36 @@ $this->setFrameMode(true);?>
                     <? endif; ?>
                     <div class="card__footer-container">
                         <div class="card__price prices product-section__price">
-                            <?
-                            if ($item["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] != "Y")
-                                echo $item["PRICES"]["BASE"]["PRINT_VALUE"];
-                            ?>
+                            <? if (!empty($item["OFFERS"])): ?>
+                                <?=$item["OFFERS"][0]["PRICES"]["BASE"]["PRINT_VALUE"]?>
+                            <? else: ?>
+                                <?
+                                if ($item["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] != "Y")
+                                    echo $item["PRICES"]["BASE"]["PRINT_VALUE"];
+                                ?>
+                            <? endif; ?>
                         </div>
                         <div class="card__footer" data-product-id="<?=$item["ID"]?>">
                             <div class="card__footer-item">
                                 <form class="card__tools">
-                                    <div class="select card__select" uk-tooltip="title: Фасовка">
-                                        <? if (empty($item["PROPERTIES"]["weight"]["VALUE"])) $item["PROPERTIES"]["weight"]["VALUE"] = 0; ?>
-                                        <span data-num="<?=$item["PROPERTIES"]["weight"]["VALUE"]?>"><?=$item["PROPERTIES"]["weight"]["VALUE"]?></span>&nbsp;кг
-                                    </div>
+                                    <? if(!empty($item["OFFERS"])): ?>
+                                        <label for="select" class="select card__select">
+                                            <input class="select__toggle select__toggle--select" type="radio" name="list" value="not_changed" id="select">
+                                            <div class="select__list js-select-offer-section">
+                                            <? $i = 0; ?>
+                                            <? foreach($item["OFFERS"] as $offer): ?>
+                                                <input <? if ($i == 0) { echo 'checked'; $i++; }?> data-price="<?=$offer["PRICES"]["BASE"]["PRINT_VALUE"]?>" class="select__toggle" type="radio" name="list" value="<?=$offer["ID"]?>" id="list[<?=$offer["ID"]?>]">
+                                                <label class="select__label" for="list[<?=$offer["ID"]?>]"><?= $offer["PROPERTIES"]["FORMAT"]["VALUE"] ?></label>
+                                            <? endforeach; ?>
+                                                <span class="select__placeholder">Вес</span>
+                                            </div>
+                                        </label>
+                                    <? else: ?>
+                                        <div class="select card__select" uk-tooltip="title: Фасовка">
+                                            <? if (empty($item["PROPERTIES"]["weight"]["VALUE"])) $item["PROPERTIES"]["weight"]["VALUE"] = 0; ?>
+                                            <span data-num="<?=$item["PROPERTIES"]["weight"]["VALUE"]?>"><?=$item["PROPERTIES"]["weight"]["VALUE"]?></span>&nbsp;кг
+                                        </div>
+                                    <? endif; ?>
                                     <div class="card__count">
                                         <div class="count-tools js-product-quantity">
                                             <span class="count-tools__arrow-minus js-product-quantity__arrow-minus"> — </span>
