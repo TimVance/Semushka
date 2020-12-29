@@ -580,3 +580,7 @@ b, strong {
 body {
     overflow-x: hidden;
 }
+
+.header-search .uk-offcanvas-bar {
+    display: none;
+}

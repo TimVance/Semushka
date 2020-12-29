@@ -42,6 +42,8 @@ $(function () {
         $("#delay-modal #js-delay-good").val(name);
     });
 
+    $(".header-search .uk-offcanvas-bar").show();
+
     // Dadata
 
     $(".dadata-fio, .dadata-mail, .dadata-city, .dadata-address, .dadata-org").attr("autocomplete", "off").after('<div class="suggestions"></div>');
