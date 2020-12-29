@@ -50,50 +50,57 @@ $this->setFrameMode(true);?>
                             </div>
                         </div>
                         <div class="card__body">
+                            <? if (!empty($item["PROPERTIES"]["promo"]["VALUE"])): ?>
+                                <div class="promo">Акция</div>
+                            <? endif; ?>
                             <div class="card__title"><a href="<?=$item["DETAIL_PAGE_URL"]?>"><?=$item["NAME"]?></a></div>
                             <? if (!empty($item["PROPERTIES"]["type"]["VALUE"])): ?>
                                 <div class="card__subtitle"><?=$item["PROPERTIES"]["type"]["VALUE"]?></div>
                             <? endif; ?>
-                            <? if (!empty($item["DISPLAY_PROPERTIES"])): ?>
-                                <div class="card__info">
-                                    <? foreach ($item["DISPLAY_PROPERTIES"] as $prop): ?>
-                                        <div class="card__info-row">
-                                            <div class="card__info-title"><?=$prop["NAME"]?></div>
-                                            <div class="card__info-note" uk-tooltip="title: Подсказка <?=$prop["VALUE"]?>"><?=$prop["VALUE"]?></div>
-                                        </div>
-                                    <? endforeach; ?>
-                                </div>
-                            <? endif; ?>
-                            <div class="card__footer-container">
-                                <div class="card__price prices product-section__price">
-                                    <?
-                                    if ($item["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] != "Y")
-                                        echo $item["PRICES"]["BASE"]["PRINT_VALUE"];
-                                    ?>
-                                </div>
-                                <div class="card__footer" data-product-id="<?=$item["ID"]?>">
-                                    <div class="card__footer-item">
-                                        <form class="card__tools">
-                                            <div class="select card__select">
-                                                <? if (empty($item["PROPERTIES"]["weight"]["VALUE"])) $item["PROPERTIES"]["weight"]["VALUE"] = 0; ?>
-                                                <span data-num="<?=$item["PROPERTIES"]["weight"]["VALUE"]?>"><?=$item["PROPERTIES"]["weight"]["VALUE"]?></span> кг
-                                            </div>
-                                            <div class="card__count">
-                                                <div class="count-tools js-product-quantity">
-                                                    <a class="count-tools__arrow-minus js-product-quantity__arrow-minus"> — </a>
-                                                    <input class="count-tools__num js-product-quantity__num input-num" type="number" value="1" id="quantity" />
-                                                    <a class="count-tools__arrow-plus js-product-quantity__arrow-plus"> + </a>
-                                                </div>
-                                            </div>
-                                        </form>
+                            <div class="card__info">
+                                <? if (!empty($item["DISPLAY_PROPERTIES"]["time"]["VALUE"])): ?>
+                                    <div class="card__info-row">
+                                        <div class="card__info-title"><?=$item["DISPLAY_PROPERTIES"]["time"]["NAME"]?></div>
+                                        <div class="card__info-note" uk-tooltip="title: <?=$item["DISPLAY_PROPERTIES"]["time"]["NAME"]?> <?=$item["DISPLAY_PROPERTIES"]["time"]["VALUE"]?>"><?=$item["DISPLAY_PROPERTIES"]["time"]["VALUE"]?></div>
                                     </div>
+                                <? endif; ?>
+                                <? if (!empty($item["PROPERTIES"]["city"]["VALUE_ENUM"])): ?>
+                                    <div class="card__info-row">
+                                        <div class="card__info-title"><?=$item["PROPERTIES"]["city"]["NAME"]?></div>
+                                        <div class="card__info-note" uk-tooltip="title: <?=$item["PROPERTIES"]["city"]["NAME"]?> <?=$item["PROPERTIES"]["city"]["VALUE_ENUM"]?>"><?=$item["PROPERTIES"]["city"]["VALUE_ENUM"]?></div>
+                                    </div>
+                                <? endif; ?>
+                                <? if (!empty($item["DISPLAY_PROPERTIES"]["price_per_kg"]["VALUE"])): ?>
+                                    <div class="card__info-row">
+                                        <div class="card__info-title"><?=$item["DISPLAY_PROPERTIES"]["price_per_kg"]["NAME"]?></div>
+                                        <div class="card__info-note" uk-tooltip="title: <?=$item["DISPLAY_PROPERTIES"]["price_per_kg"]["NAME"]?> <?=$item["DISPLAY_PROPERTIES"]["price_per_kg"]["VALUE"]?>"><?=$item["DISPLAY_PROPERTIES"]["price_per_kg"]["VALUE"]?></div>
+                                    </div>
+                                <? endif; ?>
+                                <? if (!empty($item["OFFERS"])): ?>
+                                    <div class="card__info-row">
+                                        <div class="card__info-title">Цена за упаковку</div>
+                                        <div class="card__info-note js-section-price" uk-tooltip="title: Цена за упаковку <?=$item["OFFERS"][0]["PRICES"]["BASE"]["PRINT_VALUE"]?>"><?=$item["OFFERS"][0]["PRICES"]["BASE"]["PRINT_VALUE"]?></div>
+                                    </div>
+                                <? else: ?>
+                                    <?
+                                    if ($item["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] != "Y"):?>
+                                        <div class="card__info-row">
+                                            <div class="card__info-title">Цена за упаковку</div>
+                                            <div class="card__info-note js-section-price" uk-tooltip="title: Цена за упаковку <?=$item["PRICES"]["BASE"]["PRINT_VALUE"]?>"><?=$item["PRICES"]["BASE"]["PRINT_VALUE"]?></div>
+                                        </div>
+                                    <? endif; ?>
+                                <? endif; ?>
+                                <? if (!empty($item["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["VALUE"])): ?>
+                                    <div class="card__info-row row24">
+                                        <div class="card__info-title"><?=$item["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["NAME"]?></div>
+                                        <div class="card__info-note" uk-tooltip="title: <?=$item["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["NAME"]?> <?=$item["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["VALUE"]?>"><?=$item["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["VALUE"]?></div>
+                                    </div>
+                                <? endif; ?>
+                            </div>
+                            <div class="card__footer-container">
+                                <div class="card__footer similar" data-product-id="<?=$item["ID"]?>">
                                     <div class="card__footer-item">
-                                        <button
-                                                data-name="<?=$item["NAME"]?>"
-                                                <?=($item["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] == "Y" ? 'uk-toggle="target: #delay-modal"' : "")?>
-                                                class="btn <?=($item["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] == "Y" ? "js-delay-section-product" : "js-add-section-product")?>"
-                                                type="button">
-                                            <span><?=($item["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] == "Y" ? "Под заказ" : "Купить")?></span>
+                                        <a class="btn" href="<?$arResult["DETAIL_PAGE_URL"]?>">Подробнее</a>
                                         </button>
                                     </div>
                                 </div>

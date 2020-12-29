@@ -572,3 +572,7 @@ b, strong {
     margin-bottom: 12px;
     display: inline-block;
 }
+
+.card__footer.similar {
+    justify-content: space-around;
+}
