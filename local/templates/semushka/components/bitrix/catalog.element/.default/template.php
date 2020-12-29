@@ -47,26 +47,52 @@ $this->AddDeleteAction($arResult['ID'], $arResult['DELETE_LINK'], CIBlock::GetAr
         <div class="product-detail__item js-product-detail__item" data-product-id="<?= $arResult["ID"] ?>">
             <div class="product-detail__header">
                 <h1 class="uk-h2"><?= $arResult["NAME"] ?></h1>
+                <? if (!empty($arResult["PROPERTIES"]["promo"]["VALUE"])): ?>
+                    <div class="promo">Акция</div>
+                <? endif; ?>
             </div>
             <div class="product-detail__body">
                 <div class="product-detail__info">
-                    <? foreach ($arResult["DISPLAY_PROPERTIES"] as $prop): ?>
-                        <div class="product-detail__info-row">
-                            <div class="product-detail__info-title"><?= $prop["NAME"] ?></div>
+                    <? if (!empty($arResult["DISPLAY_PROPERTIES"]["time"]["VALUE"])): ?>
+                        <div class="product-detail__info-row row<?=$arResult["DISPLAY_PROPERTIES"]["time"]["ID"]?>">
+                            <div class="product-detail__info-title"><?= $arResult["DISPLAY_PROPERTIES"]["time"]["NAME"] ?></div>
                             <div class="product-detail__info-note"
-                                 uk-tooltip="title: <?= $prop["VALUE"] ?>"><?= $prop["VALUE"] ?></div>
+                                 uk-tooltip="title: <?= $arResult["DISPLAY_PROPERTIES"]["time"]["VALUE"] ?>"><?= $arResult["DISPLAY_PROPERTIES"]["time"]["VALUE"] ?></div>
                         </div>
-                    <? endforeach; ?>
-                </div>
-            </div>
-            <div class="product-detail__price">
-                <? if (!empty($arResult["OFFERS"])): ?>
-                    <?=$arResult["OFFERS"][0]["PRICES"]["BASE"]["PRINT_VALUE"]?>
-                <? else: ?>
-                    <? if ($arResult["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] != "Y"): ?>
-                        <?= (!empty($arResult["PRICES"]["BASE"]["VALUE"]) ? $arResult["PRICES"]["BASE"]["PRINT_VALUE"] : "") ?>
                     <? endif; ?>
-                <? endif; ?>
+                    <? if (!empty($arResult["DISPLAY_PROPERTIES"]["city"]["VALUE"])): ?>
+                        <div class="product-detail__info-row row<?=$arResult["DISPLAY_PROPERTIES"]["city"]["ID"]?>">
+                            <div class="product-detail__info-title"><?= $arResult["DISPLAY_PROPERTIES"]["city"]["NAME"] ?></div>
+                            <div class="product-detail__info-note"
+                                 uk-tooltip="title: <?= $arResult["DISPLAY_PROPERTIES"]["city"]["VALUE"] ?>"><?= $arResult["DISPLAY_PROPERTIES"]["city"]["VALUE"] ?></div>
+                        </div>
+                    <? endif; ?>
+                    <? if (!empty($arResult["DISPLAY_PROPERTIES"]["price_per_kg"]["VALUE"])): ?>
+                        <div class="product-detail__info-row row<?=$arResult["DISPLAY_PROPERTIES"]["price_per_kg"]["ID"]?>">
+                            <div class="product-detail__info-title"><?= $arResult["DISPLAY_PROPERTIES"]["price_per_kg"]["NAME"] ?></div>
+                            <div class="product-detail__info-note"
+                                 uk-tooltip="title: <?= $arResult["DISPLAY_PROPERTIES"]["price_per_kg"]["VALUE"] ?>"><?= $arResult["DISPLAY_PROPERTIES"]["price_per_kg"]["VALUE"] ?></div>
+                        </div>
+                    <? endif; ?>
+                    <div class="product-detail__info-row row-price">
+                        <? if (!empty($arResult["OFFERS"])): ?>
+                            <div class="product-detail__info-title">Цена за упаковку</div>
+                            <div class="product-detail__info-note js-detail-price-text" uk-tooltip="title: Цена за упаковку"><?=$arResult["OFFERS"][0]["PRICES"]["BASE"]["PRINT_VALUE"]?></div>
+                        <? else: ?>
+                            <? if ($arResult["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] != "Y"): ?>
+                                <div class="product-detail__info-title">Цена за упаковку</div>
+                                <div class="product-detail__info-note" uk-tooltip="title: Цена за упаковку"><?=$arResult["PRICES"]["BASE"]["PRINT_VALUE"]?></div>
+                            <? endif; ?>
+                        <? endif; ?>
+                    </div>
+                    <? if (!empty($arResult["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["VALUE"])): ?>
+                        <div class="product-detail__info-row row<?=$arResult["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["ID"]?>">
+                            <div class="product-detail__info-title"><?= $arResult["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["NAME"] ?></div>
+                            <div class="product-detail__info-note"
+                                 uk-tooltip="title: <?= $arResult["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["VALUE"] ?>"><?= $arResult["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["VALUE"] ?></div>
+                        </div>
+                    <? endif; ?>
+                </div>
             </div>
             <div class="product-detail__footer">
                 <div class="product-detail__footer-item">
@@ -151,6 +177,14 @@ $this->AddDeleteAction($arResult['ID'], $arResult['DELETE_LINK'], CIBlock::GetAr
             </div>
         </section>
     <? endif; ?>
+
+    <?
+
+    GLOBAL $arrFilter;
+    $arrFilter["!ID"] = $arResult["ID"];
+
+    ?>
+
     <? $APPLICATION->IncludeComponent(
 	"bitrix:catalog.section", 
 	"detail_similar_category", 
@@ -183,8 +217,8 @@ $this->AddDeleteAction($arResult['ID'], $arResult['DELETE_LINK'], CIBlock::GetAr
 		"ELEMENT_SORT_ORDER" => "asc",
 		"ELEMENT_SORT_ORDER2" => "desc",
 		"FILTER_NAME" => "arrFilter",
-		"HIDE_NOT_AVAILABLE" => "Y",
-		"HIDE_NOT_AVAILABLE_OFFERS" => "Y",
+		"HIDE_NOT_AVAILABLE" => "N",
+		"HIDE_NOT_AVAILABLE_OFFERS" => "N",
 		"IBLOCK_ID" => "1",
 		"IBLOCK_TYPE" => "catalog",
 		"INCLUDE_SUBSECTIONS" => "Y",
@@ -209,7 +243,7 @@ $this->AddDeleteAction($arResult['ID'], $arResult['DELETE_LINK'], CIBlock::GetAr
 		"PRODUCT_ID_VARIABLE" => "id",
 		"PRODUCT_PROPS_VARIABLE" => "prop",
 		"PRODUCT_QUANTITY_VARIABLE" => "quantity",
-		"SECTION_CODE" => "",
+		"SECTION_CODE" => $arResult["ORIGINAL_PARAMETERS"]["SECTION_CODE"],
 		"SECTION_ID" => "",
 		"SECTION_ID_VARIABLE" => "SECTION_ID",
 		"SECTION_URL" => "",
@@ -230,7 +264,15 @@ $this->AddDeleteAction($arResult['ID'], $arResult['DELETE_LINK'], CIBlock::GetAr
 		"USE_MAIN_ELEMENT_SECTION" => "N",
 		"USE_PRICE_COUNT" => "N",
 		"USE_PRODUCT_QUANTITY" => "N",
-		"COMPONENT_TEMPLATE" => "detail_similar_category"
+		"COMPONENT_TEMPLATE" => "detail_similar_category",
+		"OFFERS_SORT_FIELD" => "sort",
+		"OFFERS_SORT_ORDER" => "asc",
+		"OFFERS_SORT_FIELD2" => "id",
+		"OFFERS_SORT_ORDER2" => "desc",
+		"OFFERS_FIELD_CODE" => array(
+			0 => "",
+			1 => "",
+		)
 	),
 	false
 ); ?>

@@ -44,7 +44,7 @@ $(function () {
 
     // Dadata
 
-    $(".dadata-fio, .dadata-mail, .dadata-city, .dadata-address").attr("autocomplete", "off").after('<div class="suggestions"></div>');
+    $(".dadata-fio, .dadata-mail, .dadata-city, .dadata-address, .dadata-org").attr("autocomplete", "off").after('<div class="suggestions"></div>');
 
     $(".dadata-fio").keyup(function () {
         let container = $(this).parent().find(".suggestions");
@@ -173,6 +173,38 @@ $(function () {
             .catch(error => console.log("error", error));
     });
 
+    $(".dadata-org").keyup(function () {
+        let container = $(this).parent().find(".suggestions");
+        var url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/party";
+        var token = "a5fdf1a31e7595344ef834a8a4e4f1fd358832d6";
+        var query = $(this).val();
+        var options = {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                "Authorization": "Token " + token
+            },
+            body: JSON.stringify({query: query})
+        }
+        fetch(url, options)
+            .then(response => response.text())
+            .then(result => {
+                let count = 5;
+                container.html('');
+                let arrResult = JSON.parse(result);
+                console.log(arrResult);
+                arrResult.suggestions.forEach(function(el) {
+                    if (count > 0) {
+                        container.append('<span class="suggestions-item">' + el.value + '</span>');
+                        count--;
+                    }
+                });
+            })
+            .catch(error => console.log("error", error));
+    });
+
     $(document).on("click", ".suggestions-item", function () {
         $(this).closest(".uk-form-controls").find("input").val($(this).text());
         $(this).parent().html("");
@@ -187,12 +219,12 @@ $(function () {
     $(".js-select-offer-section input").change(function () {
         let el = $(this);
         let price = $(".js-select-offer-section input:checked").data("price");
-        el.closest(".card__footer-container").find(".product-section__price").text(price);
+        el.closest(".card__body").find(".js-section-price").text(price);
     });
 
     $(".js-select-offer-detail input").change(function () {
         let price = $(".js-select-offer-detail input:checked").data("price");
-        $(".product-detail__price").text(price);
+        $(".js-detail-price-text").text(price);
     });
 
 });

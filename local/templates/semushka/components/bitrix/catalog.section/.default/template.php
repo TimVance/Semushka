@@ -21,7 +21,6 @@ $this->setFrameMode(true);?>
         $this->AddDeleteAction($item['ID'], $item['DELETE_LINK'], CIBlock::GetArrayByID($item["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
         ?>
         <div class="card-list__item" id="<?=$this->GetEditAreaId($item['ID']);?>">
-            <? echo '<pre style="display: none">'; print_r($item); echo '</pre>'; ?>
             <article class="card">
                 <div class="card__image">
                     <div class="card__img">
@@ -31,37 +30,54 @@ $this->setFrameMode(true);?>
                     </div>
                 </div>
                 <div class="card__body">
+                    <? if (!empty($item["PROPERTIES"]["promo"]["VALUE"])): ?>
+                        <div class="promo">Акция</div>
+                    <? endif; ?>
                     <div class="card__title"><a href="<?=$item["DETAIL_PAGE_URL"]?>"><?=$item["NAME"]?></a></div>
                     <? if (!empty($item["PROPERTIES"]["type"]["VALUE"])): ?>
                         <div class="card__subtitle"><?=$item["PROPERTIES"]["type"]["VALUE"]?></div>
                     <? endif; ?>
-                    <? if (!empty($item["DISPLAY_PROPERTIES"])): ?>
-                        <div class="card__info">
-                        <? foreach ($item["DISPLAY_PROPERTIES"] as $prop): ?>
+                    <div class="card__info">
+                        <? if (!empty($item["DISPLAY_PROPERTIES"]["time"]["VALUE"])): ?>
                             <div class="card__info-row">
-                                <div class="card__info-title"><?=$prop["NAME"]?></div>
-                                <div class="card__info-note" uk-tooltip="title: <?=$prop["NAME"]?> <?=$prop["VALUE"]?>"><?=$prop["VALUE"]?></div>
-                            </div>
-                        <? endforeach; ?>
-                        <? if (!empty($item["PROPERTIES"]["city"]["VALUE_ENUM"])): ?>
-                            <div class="card__info-row">
-                                <div class="card__info-title"><?=$item["PROPERTIES"]["city"]["NAME"]?></div>
-                                <div class="card__info-note" uk-tooltip="title: <?=$item["PROPERTIES"]["city"]["NAME"]?> <?=$item["PROPERTIES"]["city"]["VALUE_ENUM"]?>"><?=$item["PROPERTIES"]["city"]["VALUE_ENUM"]?></div>
+                                <div class="card__info-title"><?=$item["DISPLAY_PROPERTIES"]["time"]["NAME"]?></div>
+                                <div class="card__info-note" uk-tooltip="title: <?=$item["DISPLAY_PROPERTIES"]["time"]["NAME"]?> <?=$item["DISPLAY_PROPERTIES"]["time"]["VALUE"]?>"><?=$item["DISPLAY_PROPERTIES"]["time"]["VALUE"]?></div>
                             </div>
                         <? endif; ?>
+                        <? if (!empty($item["PROPERTIES"]["city"]["VALUE_ENUM"])): ?>
+                        <div class="card__info-row">
+                            <div class="card__info-title"><?=$item["PROPERTIES"]["city"]["NAME"]?></div>
+                            <div class="card__info-note" uk-tooltip="title: <?=$item["PROPERTIES"]["city"]["NAME"]?> <?=$item["PROPERTIES"]["city"]["VALUE_ENUM"]?>"><?=$item["PROPERTIES"]["city"]["VALUE_ENUM"]?></div>
                         </div>
-                    <? endif; ?>
-                    <div class="card__footer-container">
-                        <div class="card__price prices product-section__price">
-                            <? if (!empty($item["OFFERS"])): ?>
-                                <?=$item["OFFERS"][0]["PRICES"]["BASE"]["PRINT_VALUE"]?>
-                            <? else: ?>
-                                <?
-                                if ($item["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] != "Y")
-                                    echo $item["PRICES"]["BASE"]["PRINT_VALUE"];
-                                ?>
+                        <? endif; ?>
+                        <? if (!empty($item["DISPLAY_PROPERTIES"]["price_per_kg"]["VALUE"])): ?>
+                            <div class="card__info-row">
+                                <div class="card__info-title"><?=$item["DISPLAY_PROPERTIES"]["price_per_kg"]["NAME"]?></div>
+                                <div class="card__info-note" uk-tooltip="title: <?=$item["DISPLAY_PROPERTIES"]["price_per_kg"]["NAME"]?> <?=$item["DISPLAY_PROPERTIES"]["price_per_kg"]["VALUE"]?>"><?=$item["DISPLAY_PROPERTIES"]["price_per_kg"]["VALUE"]?></div>
+                            </div>
+                        <? endif; ?>
+                        <? if (!empty($item["OFFERS"])): ?>
+                            <div class="card__info-row">
+                                <div class="card__info-title">Цена за упаковку</div>
+                                <div class="card__info-note js-section-price" uk-tooltip="title: Цена за упаковку <?=$item["OFFERS"][0]["PRICES"]["BASE"]["PRINT_VALUE"]?>"><?=$item["OFFERS"][0]["PRICES"]["BASE"]["PRINT_VALUE"]?></div>
+                            </div>
+                        <? else: ?>
+                            <?
+                            if ($item["PROPERTIES"]["under_the_order"]["VALUE_XML_ID"] != "Y"):?>
+                                <div class="card__info-row">
+                                    <div class="card__info-title">Цена за упаковку</div>
+                                    <div class="card__info-note js-section-price" uk-tooltip="title: Цена за упаковку <?=$item["PRICES"]["BASE"]["PRINT_VALUE"]?>"><?=$item["PRICES"]["BASE"]["PRINT_VALUE"]?></div>
+                                </div>
                             <? endif; ?>
-                        </div>
+                        <? endif; ?>
+                        <? if (!empty($item["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["VALUE"])): ?>
+                            <div class="card__info-row row24">
+                                <div class="card__info-title"><?=$item["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["NAME"]?></div>
+                                <div class="card__info-note" uk-tooltip="title: <?=$item["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["NAME"]?> <?=$item["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["VALUE"]?>"><?=$item["DISPLAY_PROPERTIES"]["price_per_kg_tn"]["VALUE"]?></div>
+                            </div>
+                        <? endif; ?>
+                    </div>
+                    <div class="card__footer-container">
                         <div class="card__footer" data-product-id="<?=$item["ID"]?>">
                             <div class="card__footer-item">
                                 <form class="card__tools">

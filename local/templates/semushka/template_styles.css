@@ -468,6 +468,7 @@ b, strong {
 
 .top-banner {
     cursor: pointer;
+    text-align: center;
 }
 
 .top-banner:hover {
@@ -548,4 +549,26 @@ b, strong {
 
 .page-wrapper {
     overflow: visible;
+}
+
+.select__list:before {
+    right: 3px;
+}
+
+.card__info-row.row24, .product-detail__info-row.row24 {
+    color: red;
+    font-weight: bold;
+}
+
+.promo {
+    background-color: red;
+    color: #fff;
+    padding: 4px 26px;
+    text-align: center;
+    border-radius: 10px;
+    margin: auto;
+    font-size: 13px;
+    margin-top: -40px;
+    margin-bottom: 12px;
+    display: inline-block;
 }
