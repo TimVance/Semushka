@@ -584,3 +584,16 @@ body {
 .header-search .uk-offcanvas-bar {
     display: none;
 }
+
+.card__footer-item .btn {
+    text-align: center;
+}
+
+@media screen and (max-width: 960px) {
+    .promo {
+        padding: 2px 18px;
+        font-size: 12px;
+        margin-top: -28px;
+        margin-bottom: 5px;
+    }
+}
