@@ -26,6 +26,7 @@ $(function () {
 
         })
     })();
+    $('body').addClass('load');
     if ($("body").hasClass("admin")) {
         let height = $("#bx-panel").height();
         $("#header-search").css("top", height);

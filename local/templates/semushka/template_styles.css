@@ -577,10 +577,6 @@ b, strong {
     justify-content: space-around;
 }
 
-body {
-    overflow-x: hidden;
-}
-
 .header-search .uk-offcanvas-bar {
     display: none;
 }

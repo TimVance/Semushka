@@ -83,7 +83,7 @@
 		"CACHE_TYPE" => "A",
 		"COMPATIBLE_MODE" => "Y",
 		"CONVERT_CURRENCY" => "N",
-		"CUSTOM_FILTER" => "{\"CLASS_ID\":\"CondGroup\",\"DATA\":{\"All\":\"AND\",\"True\":\"True\"},\"CHILDREN\":[]}",
+		"CUSTOM_FILTER" => "{\"CLASS_ID\":\"CondGroup\",\"DATA\":{\"All\":\"AND\",\"True\":\"True\"},\"CHILDREN\":[{\"CLASS_ID\":\"CondIBProp:1:25\",\"DATA\":{\"logic\":\"Equal\",\"value\":122}}]}",
 		"DETAIL_URL" => "",
 		"DISABLE_INIT_JS_IN_COMPONENT" => "N",
 		"DISPLAY_BOTTOM_PAGER" => "N",
@@ -94,12 +94,12 @@
 		"ELEMENT_SORT_ORDER" => "asc",
 		"ELEMENT_SORT_ORDER2" => "desc",
 		"FILTER_NAME" => "arrFilter",
-		"HIDE_NOT_AVAILABLE" => "Y",
-		"HIDE_NOT_AVAILABLE_OFFERS" => "Y",
+		"HIDE_NOT_AVAILABLE" => "N",
+		"HIDE_NOT_AVAILABLE_OFFERS" => "N",
 		"IBLOCK_ID" => "1",
 		"IBLOCK_TYPE" => "catalog",
 		"INCLUDE_SUBSECTIONS" => "Y",
-		"LINE_ELEMENT_COUNT" => "3",
+		"LINE_ELEMENT_COUNT" => "30",
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
 		"META_KEYWORDS" => "-",
@@ -111,7 +111,7 @@
 		"PAGER_SHOW_ALWAYS" => "N",
 		"PAGER_TEMPLATE" => ".default",
 		"PAGER_TITLE" => "Товары",
-		"PAGE_ELEMENT_COUNT" => "9",
+		"PAGE_ELEMENT_COUNT" => "30",
 		"PARTIAL_PRODUCT_PROPERTIES" => "N",
 		"PRICE_CODE" => array(
 			0 => "BASE",
@@ -141,7 +141,15 @@
 		"USE_MAIN_ELEMENT_SECTION" => "N",
 		"USE_PRICE_COUNT" => "N",
 		"USE_PRODUCT_QUANTITY" => "N",
-		"COMPONENT_TEMPLATE" => ".default"
+		"COMPONENT_TEMPLATE" => ".default",
+		"OFFERS_SORT_FIELD" => "sort",
+		"OFFERS_SORT_ORDER" => "asc",
+		"OFFERS_SORT_FIELD2" => "id",
+		"OFFERS_SORT_ORDER2" => "desc",
+		"OFFERS_FIELD_CODE" => array(
+			0 => "",
+			1 => "",
+		)
 	),
 	false
 );?>

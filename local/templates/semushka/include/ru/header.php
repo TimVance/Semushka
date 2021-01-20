@@ -31,7 +31,7 @@ if (Cmodule::IncludeModule("iblock")) {
         echo '</div>';
         // Modal - form
         ?>
-        <div id="top-banner-modal" uk-modal>
+        <div style="display: none" id="top-banner-modal" uk-modal>
             <div class="uk-modal-dialog uk-modal-body">
                 <?$APPLICATION->IncludeComponent(
                     "bitrix:form",
