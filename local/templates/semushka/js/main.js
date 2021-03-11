@@ -267,8 +267,9 @@ window.onload = () => {
                 let parent = el.closest('.card__footer');
                 let product_id = parseInt(parent.getAttribute('data-product-id'));
                 let quantity = parseInt(parent.querySelector('.js-product-quantity__num').value);
-                let offer_list = document.querySelector(".js-select-offer-section");
+                let offer_list = parent.querySelector(".js-select-offer-section");
                 if (offer_list != null) {
+                    console.log(offer_list);
                     let offer = offer_list.querySelector("input:checked");
                     if (offer != null) product_id = offer.value;
                     else {
